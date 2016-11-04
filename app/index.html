@@ -1,0 +1,24 @@
+<html ng-app="app">
+<head>
+	<meta charset="utf-8">
+</head>
+<body>
+	<div id="data"></div>
+	<script type="text/javascript">
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.open('GET', '/api/quote/NASDAQ');
+		xmlhttp.onreadystatechange = function() {
+		    if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+		        if(xmlhttp.status == 200) {
+		        	var div = document.getElementById('data');
+		        	div.innerText = xmlhttp.responseText;
+		        }
+		        else{
+		            console.log('Error: ' + xmlhttp.statusText )
+		        }
+		    }
+		}
+		xmlhttp.send();
+	</script>
+</body>
+</html>
